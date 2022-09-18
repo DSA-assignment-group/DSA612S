@@ -1,5 +1,5 @@
 # DSA612S
-Assessment project
+Assessment management project
 
 
 Assignment
