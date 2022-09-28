@@ -1,0 +1,39 @@
+syntax = "proto3";
+package assignment1P1;
+import "google/protobuf/wrappers.proto";
+
+service Assessment_Management_System {
+	rpc create_users(stream UserInfo) returns (google.protobuf.StringValue);
+	rpc create_courses(stream CourseInfo) returns (google.protobuf.StringValue);
+	rpc create_assignment(Assignments) returns (google.protobuf.StringValue);
+	rpc assign_courses(CourseInfo) returns (google.protobuf.StringValue);
+	rpc register(stream CourseInfo) returns (google.protobuf.StringValue);
+    rpc submit_assignments(stream AssignmentInfo) returns (google.protobuf.StringValue);
+	rpc request_assignments(stream AssignmentInfo) returns (google.protobuf.StringValue);
+	rpc submit_marks(AssignmentInfo) returns (google.protobuf.StringValue);
+}
+
+message UserInfo {
+    string iD = 1;
+	string name = 2;
+}
+
+message CourseInfo {
+    string course_code = 1;
+	string course_name = 2;
+	UserInfo course_assessor  =3;
+}
+
+message Assignments {
+	string numberOfAssignment = 1;
+	string description = 2;
+	string weight = 3;
+
+}
+
+message AssignmentInfo {
+    string iD = 1;
+	string description = 2;
+	string course_code = 3;
+	string assignment_mark = 4;
+}
